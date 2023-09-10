@@ -3,6 +3,51 @@ import PureSwiftUI
 
 let layoutConfig = LayoutGuideConfig.grid(columns: 375 , rows: 471)
 
+struct TopShape: Shape {
+  func path(in rect: CGRect) -> Path {
+    let grid = layoutConfig.layout(in: rect)
+    var path = Path()
+
+    path.move(to: grid[32, 16])
+    path.addLine(to: grid[341, 16])
+    path.quadCurve(grid[358, 36], cp: grid[358, 16])
+
+    path.addLine(to: grid[358, 124])
+    path.quadCurve(grid[352, 139], cp: grid[358, 132])
+
+    path.addLine(to: grid[215, 277])
+    path.quadCurve(grid[187, 277], cp: grid[200, 289])
+
+    path.addLine(to: grid[21, 111])//2
+    path.quadCurve(grid[16, 97], cp: grid[16, 105])
+
+    path.addLine(to: grid[16, 35])//3
+    path.quadCurve(grid[32, 16], cp: grid[16, 16])
+
+    return path
+  }
+}
+
+struct LeftShape: Shape {
+    func path(in rect: CGRect) -> Path {
+      let grid = layoutConfig.layout(in: rect)
+      var path = Path()
+
+      path.move(grid[31, 143])
+      path.addLine(to: grid[344, 456])
+      path.curve(grid[337, 471], cp1:grid[349, 461], cp2:grid[346, 470])
+
+      path.addLine(to: grid[32, 470])
+      path.quadCurve(grid[16, 453], cp: grid[16, 471])
+
+      path.addLine(to: grid[16, 149])
+      path.curve(grid[31, 143], cp1: grid[15, 144], cp2: grid[23, 137])
+
+      return path
+      
+    }
+}
+
 struct RightShape: Shape {
 
   func path(in rect: CGRect) -> Path {
@@ -11,13 +56,13 @@ struct RightShape: Shape {
     var path = Path()
     path.move(to: grid[358, 179])
     path.addLine(to: grid[358, 427])
-    path.addLine(to: grid[343, 433])
+    path.curve(grid[343, 433], cp1: grid[358, 435], cp2: grid[349, 438]) 
     
     path.addLine(to: grid[224, 313])
     path.quadCurve(grid[224, 290], cp: grid[212, 302])
 
     path.addLine(to: grid[343, 171])
-    path.addLine(to: grid[358, 177])
+    path.curve(grid[358, 177], cp1: grid[350, 164], cp2: grid[358, 168])
 
     return path
   }
