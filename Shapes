@@ -14,7 +14,7 @@ struct RightShape: Shape {
     path.addLine(to: grid[343, 433])
     
     path.addLine(to: grid[224, 313])
-    path.addLine(to: grid[224, 290])
+    path.quadCurve(grid[224, 290], cp: grid[212, 302])
 
     path.addLine(to: grid[343, 171])
     path.addLine(to: grid[358, 177])
