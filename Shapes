@@ -1,0 +1,24 @@
+import SwiftUI
+import PureSwiftUI
+
+let layoutConfig = LayoutGuideConfig.grid(columns: 375 , rows: 471)
+
+struct RightShape: Shape {
+
+  func path(in rect: CGRect) -> Path {
+    let grid = layoutConfig.config(in: rect)
+
+    var path = Path()
+    path.move(to: grid[358, 179])
+    path.addLine(to: grid[358, 427])
+    path.addLine(to: grid[343, 433])
+    
+    path.addLine(to: grid[224, 313])
+    path.addLine(to: grid[224, 290])
+
+    path.addLine(to: grid[343, 171])
+    path.addLine(to: grid[358, 177])
+
+    return path
+  }
+}
