@@ -15,7 +15,8 @@ struct ContentView: View {
     VStack {
       ZStack {
         ForEach(Segment.allCasses, id: \.self) {
-        segment.image
+          segment.image
+            .clipShape(RightShape())
         }
       } 
       Spacer()
