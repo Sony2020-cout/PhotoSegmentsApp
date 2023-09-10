@@ -16,12 +16,32 @@ struct ContentView: View {
       ZStack {
         ForEach(Segment.allCasses, id: \.self) {
           segment.image
-            .clipShape(RightShape())
+            .modifier(ClipAnimatedShape(segment: segment))
         }
       } 
       Spacer()
     }
     .ignoreSafeArea()
+  }
+}
+
+struct ClipAnimatedShape: ViewModifier {
+  var segment: Segment
+
+  func body(content: Content) -> some View {
+    switch segment{
+      case .top:
+        content
+          .clipShape(TopShape())
+
+      case .left:
+        content
+          .clipShape(LeftShape())
+
+      case .right:
+        content
+          .clipShape(RightShape())
+    }
   }
 }
 
