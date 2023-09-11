@@ -18,11 +18,16 @@ final class ContentViewModel: ObseravableObject {
 
 private extension ContentViewModel {
   func subscribe() {
-    
+    $selectedSegment
+      .sink { [weak self] _ in 
+        self?.animateSegment()
+      }
+      .store(in: &canellable)
   }
 
   func animateSegment() {
-    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+    timer.invalidate()
+    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
       self.selectedSegment = self.selectedSegment.next
     })
   }
