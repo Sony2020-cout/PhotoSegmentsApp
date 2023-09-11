@@ -2,5 +2,26 @@ import SwiftUI
 import Combine
 
 final class ContentViewModel: ObseravableObject {
+
+  init() {
+    subscribe()
+  }
+  deinit() {
+    cancellable.removeAll()
+  }
+
+  private var cancellable: Set<AnyCancellable> = [] 
+  private var timer = Timer()
   @Published var selectedSegment = Segment.top
+}
+
+private extension ContentViewModel {
+  func subscribe() {
+    
+  }
+
+  func animateSegment() {
+    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+      self.selectedSegment = .right})
+  }
 }
