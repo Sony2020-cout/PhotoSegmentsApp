@@ -5,6 +5,7 @@ final class ContentViewModel: ObseravableObject {
 
   init() {
     subscribe()
+    animateSegment()
   }
   deinit() {
     cancellable.removeAll()
@@ -22,6 +23,7 @@ private extension ContentViewModel {
 
   func animateSegment() {
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-      self.selectedSegment = .right})
+      self.selectedSegment = self.selectedSegment.next
+    })
   }
 }
