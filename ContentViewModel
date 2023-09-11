@@ -1,0 +1,6 @@
+import SwiftUI
+import Combine
+
+final class ContentViewModel: ObseravableObject {
+  @Published var selectedSegment = Segment.top
+}
