@@ -35,6 +35,7 @@ struct ContentView: View {
             }
         }
       } 
+      .pading(.top, 15)
       Spacer()
     }
     .ignoreSafeArea()
