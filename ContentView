@@ -8,6 +8,13 @@ enum Segment: String, CaseIterable {
   var image: Image {
       Image(self.rawValue)
   }
+  var next: Segment {
+    switch self {
+      case .top: return .right
+      case .left: return .top
+      case .right: return .left
+    }
+  }
 }
 
 struct ContentView: View {
